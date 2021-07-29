@@ -1,0 +1,29 @@
+.header {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.main-content {
+  background-color: yellow;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+.footer {
+  background-color: green;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+p,h1 {
+  font-weight: bold;
+  font-size: 20px;
+  font: 2em sans-serif;
+}
