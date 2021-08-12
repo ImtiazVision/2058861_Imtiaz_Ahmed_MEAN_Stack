@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Cart Management</title>
+    <style>
+      .card {
+        margin-bottom: 35px;
+      }
+    </style>
+    <script src="script.js"></script>
+
+    </head>
+
+    <body style="background-color: rgb(57, 188, 228);">
+      <!-- onload=checkIfEmpty() -->
+
+      <div class="container" style="background-color: rgb(57, 188, 228); padding: 1px;">
+        <h1 style="color: rgb(29, 89, 141); text-align: center;">Management of Shopping Cart</h1>
+      </div>
+      </br>
+      </br>
+      </br>
+      <div class="container col-6" style=" background-color: #6a55b6; padding: 15px;">
+        <div>
+          <h2 style="color:rgb(210, 223, 235); text-align: center;">My Shopping Lists</h2>
+        </div>
+        </br>
+        <div>
+          <h4 style="color:rgb(206, 221, 235)" id="quantities"></h4>
+        </div>
+        </br>
+        <div class="row">
+          <div class="col-6 ">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick=location.href='total.html'
+              id="checkout">Checkout</button>
+          </div>
+          <div class="col-6">
+
+            <button type="button" class="btn btn-warning btn-lg btn-block" onclick="emptyData()"> Reset</button>
+          </div>
+        </div>
+      </div>
+      </br>
+      </br>
+      </br>
+      <div class="container" id="outter" style="color: rgb(33, 20, 145);">
+        <div class="row" id="row">
+          <div class="col-4">
+            <div class="card" style="width: 18rem; margin-bottom: 25px;">
+              <img class=card-img-top src="img/MacBookPro.jpg" alt=Card image cap>
+              <div class="card-body">
+                <h1 class="card-title">Apple MacBook Pro</h1>
+                <p class="card-text"> Price: $1,499.00 </p>
+                <input type="button" value="Add me!" id="0" class="btn btn-primary btn-sm"
+                  onclick=add('AppleMacBookPro',1499.00)>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card" style="width: 18rem; margin-bottom: 25px;">
+              <img class=card-img-top src="img/lenovo.webp" alt=Card image cap>
+              <div class="card-body">
+                <h1 class="card-title"> Lenovo Carbon X1</h1>
+                <p class="card-text"> Price: $1684.50 </p>
+                <input type="button" value="Add me!" id="1" class="btn btn-primary btn-sm"
+                  onclick=add('LenovoCarbonX1',1684.50)>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card" style="width: 18rem; margin-bottom: 25px;">
+              <img class=card-img-top src="img/RolexWatch.jpg" alt=Card image cap>
+              <div class="card-body">
+                <h1 class="card-title">Rolex DateJust</h1>
+                <p class="card-text"> Price: $5,082.50 </p>
+                <input type="button" value="Add me!" id="2" class="btn btn-primary btn-sm"
+                  onclick=add('RolexDateJust',5082.50)>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="card" style="width: 18rem; margin-bottom: 25px;">
+              <img class=card-img-top src="img/FitbitTracker.jpg" alt=Card image cap>
+              <div class="card-body">
+                <h1 class="card-title">Fitbit Tracker </h1>
+                <p class="card-text"> Price: $129.35 </p>
+                <input type="button" value="Add me!" id="3" class="btn btn-primary btn-sm"
+                  onclick=add('FitbitTracker',129.35)>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+</html>
