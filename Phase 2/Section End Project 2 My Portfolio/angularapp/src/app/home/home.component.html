@@ -1,0 +1,115 @@
+
+<div
+  class="position-absolute"
+  color="primary"
+  style="color: rgb(109, 7, 95); background-color: rgb(80, 175, 250)"
+>
+  <h2>My Portfolio</h2>
+  <h3>Welcome username</h3>
+  <form>
+    <label>Contact Name</label>
+    <input type="text" /><br />
+    <label>Phone No.</label>
+    <input type="text" /><br />
+    <input type="button" value="Save" />
+  </form>
+</div>
+
+<div>
+  <h3>Contact Details</h3>
+</div>
+<div class="card">
+  <form>
+    <div>
+      <div class="form-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            &nbsp;&nbsp;&nbsp;
+            <label>Enter Full Name</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              &nbsp;&nbsp;&nbsp;&nbsp;<input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                style="font: bold 20px Georgia, serif; border: 3px solid #000"
+              />
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            &nbsp;&nbsp;&nbsp;
+            <label>Enter Contact Number</label>
+          </div>
+          <div class="form-row">
+            <div class="col">
+              &nbsp;&nbsp;&nbsp;&nbsp;<input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                style="font: bold 20px Georgia, serif; border: 3px solid #000"
+              />
+              <p></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row mt-4">
+          <div class="col-md-6">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button
+              type="button"
+              class="btn btn-primary"(click)="addItem()"
+              mat-button
+              style="
+                border: 3px solid #000;
+                background-color: rgb(80, 175, 250);
+                color: black;
+              "
+            >
+              Add</button
+            >&nbsp;&nbsp;&nbsp;
+            <button
+              type="button"
+              class="btn btn-primary" (click)="reset()" 
+              mat-button
+              style="
+                border: 3px solid #000;
+                background-color: rgb(80, 175, 250);
+                color: black;
+              "
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br /><br />
+
+  <div class="col-md-8 mt-4 mb-4">
+      <h3 style="font-size: 30px;">&nbsp;&nbsp;&nbsp;To Do:</h3>
+      <ul class="list-group" *ngFor="let item of listData">
+        <li class="list-group-item" style="font-size: 24px;
+        font-family: Walter Turncoat;"><span>&nbsp;&nbsp;&nbsp;{{item.name}}</span>&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" (click)="removeItem(item)" 
+          mat-button style="border: 3px solid #000; background-color: rgb(80, 175, 250);	color: black;">
+          Delete</button></li>
+      </ul>
+    </div>
+
+  <button
+    style="
+      border: 2px solid #000;
+      background-color: rgb(80, 175, 250);
+      border-radius: 3px;
+      color: black;
+    "
+  >
+    Logout
+  </button>
+</div>

@@ -1,0 +1,19 @@
+
+<!-- <ul class="nav">
+  <li><a routerLink="/home" class="active">Home</a></li>
+  <li><a routerLink="/">Login</a></li>
+  <li><a routerLink="/register">Register</a></li>
+</ul> -->
+
+<div>
+    <h2>Login Form</h2>
+    <form [formGroup]="loginRef" (ngSubmit)="checkUser()">
+        <label>UserName</label>
+        <input type="text" formControlName="user"/><br/>
+        <label>Password</label>
+        <input type="password" formControlName="pass"/><br/>
+        <input type="submit" value="submit" [disabled]="!loginRef.valid"/>
+        <input type="reset" value="reset"/>
+    </form>
+    {{msg}}
+</div>
