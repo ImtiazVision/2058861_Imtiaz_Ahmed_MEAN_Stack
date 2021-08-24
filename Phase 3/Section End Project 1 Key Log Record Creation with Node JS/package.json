@@ -1,0 +1,17 @@
+{
+  "name": "com",
+  "version": "1.0.0",
+  "description": "Objectives: Develop a Node.js project that imports a Debug Node.js application and allows us to capture logs in a document.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "read-line": "^0.1.2",
+    "readline-sync": "^1.4.10",
+    "sync": "^0.2.5"
+  }
+}

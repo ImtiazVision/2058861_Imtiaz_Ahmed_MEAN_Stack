@@ -1,0 +1,44 @@
+<!-- Play the quiz if the quiz has not ended -->
+<div class="quiz-card" *ngIf="!quizEnded">
+  <h1 style="text-align: center">Online Test Application</h1>
+    <mat-card style="text-align:center;">
+      <mat-card-header >
+        <mat-card-title id="content" ><b>Question</b> {{ currentQuestion + 1 }}. {{ questions[currentQuestion].question }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="card-content">
+          <mat-radio-group class="ques-radio-group" [(ngModel)]="currentAns">
+            <mat-radio-button class="ques-radio-button" *ngFor="let option of questions[currentQuestion].options" [value]="option">
+              {{ option }}&nbsp;&nbsp;&nbsp;&nbsp;
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card-content>
+      <hr>
+      <!-- Click next for next question -->
+      <mat-card-actions >
+        <button class="btn1"  mat-raised-button *ngIf="questions[currentQuestion].answered" (click)="nextQuestion()">Next Question</button>
+        <button mat-raised-button class="btn"(click)="submitAns()">Submit</button>
+      </mat-card-actions>
+    </mat-card>  
+  </div>
+  
+<!-- stop the quiz if the quiz has ended -->  
+  <div class="quiz-card" *ngIf="quizEnded">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h2>Quiz Finished!!! Results are shown below</h2></mat-card-title>
+      </mat-card-header>
+      <!-- Show the final result -->
+      <mat-card-content class="card-content">
+        <p><br><br><br></p>
+        <h1 style="font-size: 80px;"><strong>Result: {{ (currentScore/questions.length) * 100 }}</strong>%</h1>
+        <p><br><br><br></p>
+        <p>You Scored <strong>{{ currentScore }}</strong> out of <strong>{{ questions.length }}</strong></p>
+      </mat-card-content>
+      <!-- Start the quiz again -->
+      <mat-card-actions>
+        <button  class="btn2"  mat-button color="primary" onClick="window.location.reload();">Take Again</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

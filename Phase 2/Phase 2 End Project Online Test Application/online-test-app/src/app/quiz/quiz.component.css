@@ -1,0 +1,22 @@
+.btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(40, 15, 184);
+  background-color: greenyellow;;
+}
+
+.btn1 { 
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(40, 15, 184);  
+  background-color: greenyellow;
+}
+.btn2 { 
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(40, 15, 184);
+  background-color: greenyellow;
+}
+#content {
+  text-align: center;
+}
