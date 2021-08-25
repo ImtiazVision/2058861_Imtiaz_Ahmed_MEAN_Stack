@@ -1,3 +1,9 @@
+# To be ignored Files
+*.docx
+
+
+# To be ignored folders
+
 Screenshots/
 ScreenShots/
 Screen Shots/
