@@ -1,42 +1,24 @@
 let fs = require('fs');
+let readline = require('readline-sync');
 
-let anythingObj = require('readline-sync');
+let fname = readline.question('Enter first name: ');
+let lname = readline.question('Enter last name: ');
+let gender = readline.question('Enter gender: ');
+let email = readline.questionEMail('Enter email: ');
 
-var entries = anythingObj.question("Enter anything meaningful to be stored inside the array: ");
+// creating a new empty array and a date variable
+let recordsArr = [];
+let date = new Date();
 
-console.log(entries);
+let obj = {first_name:fname, last_name:lname,gender_type:gender,email_address:email,curr_date:date};
+// pushing the elements into the array
+recordsArr.push(obj);
 
-debugger;
+// converting to string via JSON.stringify 
+let string_of_obj = JSON.stringify(recordsArr);
+// creating a json file using writeFileSync method which will creaate a data.json file and appends the values via {flag:'a+'} so that data is not overriden by the previous data
+fs.writeFileSync('data.json', string_of_obj,{flag:'a+'});
 
-let inputArray = new Array();
 
-// Getting user input
 
-for (var i=0; i<parseInt(entries); i++) { 
-  let id = anythingObj.questionInt("Please enter your Id: ");
-  console.log("You have entered the following Id: "+id);
-  debugger;
 
-  let name = anythingObj.question("Please enter your name: ");
-  console.log("You have entered the following name: "+name);
-  debugger;
-  let email = anythingObj.questionEmail("Please enter your email address: ");
-  console.log("You have entered the following email: "+email);
-  debugger;
-  let phone = anythingObj.questionInt("Please enter your phone number: ");
-  console.log("You have entered the following phone number: "+phone);
-  debugger;
-
-  // JSON
-
-  let jsonArray = {"id":id, "name": name, "email address": email, "time":new Date().toISOString()  }
-  inputArray.push(jsonArray);
-  debugger;
-
-  // Convertion of string
-
-  let JsonElement = JSON.stringify(inputArray);
-  fs.readFileSync('',JsonElement);
-  debugger;
-  console.log("We have done the code!");
-}
