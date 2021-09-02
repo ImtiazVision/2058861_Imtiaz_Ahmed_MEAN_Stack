@@ -7,34 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- connecting library file part of the node_module folder -->
+    <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript">
-    let ws = new WebSocket("ws://localhost:9090");
-    
-    // The following code will open the connection of web socket
-    ws.onopen = () => {
-      // The following code will send data to web socket server application
-      ws.send("Hello Web Socket, I am Web Socket Client App!");
-      info = () => {
-        let msg = document.getElementById("dd").value;
-        ws.send(msg);
-        document.getElementById("dd").value = "";
-
-        var chat = document.getElementById("chat");
-        var msgToBeAdded = document.createTextNode("Hi there, you are: "+ msg);
-        chat.appendChild(msgToBeAdded);
-        var br = document.createElement("br");
-        chat.appendChild(br); // this will create a break statement
-
-        // The following code will receive data from web socket server application
-        ws.onmessage = (msg) => {
-          var server = document.getElementById("chat");
-          var msgToBeAdded = document.createTextNode("This is Server saying: "+msg.data);
-          server.appendChild(msgToBeAdded); // appending the message to the chat box
-          var br = document.createElement("br"); // create a break statement
-          chat.appendChild(br); // appending a break tag to the chat box
-        }
-      }
-    }
+      var socket = io();
+        socket.emit("obj","Hello Server I am Web Socket Client");
+        socket.on("obj1",(msg)=> {
+            console.log(msg);
+        })
     </script>
   </head>
 
@@ -44,11 +24,10 @@
     </div>
     <br>
     <div class="container col-4" style="background-color: #692099">
-      <form style="border: rgb(176, 176, 211);padding-bottom: 20px;">
+      <form style="border: rgb(176, 176, 211);padding-bottom: 20px;"> <br>
         <div class="form-group">
-          <!-- <label for="FormGroupControlExampleTextareaInput">Message</label> -->
           <input type="text" class="form-control"  placeholder="Enter your message: " autocomplete="off" required style="border-radius: 5px;padding:5px; font-family: 'Epilogue', sans-serif;font-size: 1.1rem"/>
-        </div>
+        </div> <br> 
           
           <button style="border-radius:20px;padding:5px; background-color: #692099; color: white;font-family: 'Epilogue', sans-serif;font-size: 1.1rem"  onclick= info() id="blogBtn">Send Message</button>
       </form>
@@ -63,10 +42,7 @@
           </div>
         </div>
       </div>
-    </div>
-<!-- 
-    <script src="/socket.io/socket.io.js"></script> -->
-    
+    </div>    
   </body>
 
 </html>
