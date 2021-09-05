@@ -4,7 +4,24 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Delete Course</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    socket.on('startup',(start)=>{
+      console.log(start);
+    })
+    socket.on('deleted_response',(response)=>{
+      console.log(response);
+      document.getElementById('response').innerHTML = response;
+    })
+
+    function reset() {document.getElementById('id').value = '';}
+
+    
+    
+  </script>
 </head>
 <body>
   <h2>Delete Course</h2>
