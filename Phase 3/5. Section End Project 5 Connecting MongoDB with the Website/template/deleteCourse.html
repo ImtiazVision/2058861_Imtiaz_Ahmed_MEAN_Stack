@@ -19,7 +19,15 @@
 
     function reset() {document.getElementById('id').value = '';};
 
-    function 
+    function submit(){
+      let course_id = document.getElementById('id').value;
+
+      if(course_id == '') {document.getElementById('response').innerHTML = 'Please enter a course ID';}
+      else { 
+        socket.emit("course_deleted",Number(course_id));
+        reset();
+      }
+    }
 
     
   </script>
