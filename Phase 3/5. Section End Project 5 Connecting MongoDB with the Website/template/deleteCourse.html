@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delete Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket = io();
@@ -28,11 +29,15 @@
         reset();
       }
     }
-
-    
   </script>
 </head>
-<body>
+<body style="text-align: center;font-family: 'Epilogue', sans-serif;">
   <h2>Delete Course</h2>
+  <label>Course Id: </label>
+  <input style="font-family: 'Epilogue', sans-serif;" type='number' id='id'/><br>
+  <input style="font-family: 'Epilogue', sans-serif;" type='button' value='Delete' onclick='submit()'/>
+  <input style="font-family: 'Epilogue', sans-serif;" type='button' value='Reset' onclick='reset()'/> <br><br>
+  <div id='response'></div><br>
+  <a href="/">Main page</a>
 </body>
 </html>
