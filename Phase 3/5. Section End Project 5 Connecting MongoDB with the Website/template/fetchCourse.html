@@ -7,7 +7,36 @@
   <title>Fetch Course</title>
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="/socket.io/socket.io.js"></script>
-  
+  <script>
+    let start = true;
+    let socket = io();
+    let tableRowStart = '<tr><td>';
+    let tableRowMiddle = '</td><td>';
+    let tableRowEnd = '</td></tr>';
+
+    function translateToTable(courses){
+      let fullString = '';
+      let breakString = '';
+      for (let i in courses){
+        breakString = course[i].description.replaceAll("\n","<br>");
+        fullString += tableRowStart + courses[i]._id + tableRowMiddle + courses[i].course_name + tableRowMiddle + breakString + tableRowEnd + courses[i].amount+ tableRowEnd; 
+      }
+      return fullString;
+    }
+    socket.on('startup',(start)=>{
+      console.log(start);
+    });
+
+    socket.on('fetched_courses',(courses)=>{
+      let tableStart=`<tr><th class=\'id\'>Course Id</th><th class=\'name\''>Course Name</th><th class=\'description\'>Course Description</th><th class=\'coursePrice\'>Course Price</th></tr>'>`;
+
+      document.getElementById('table').innerHTML = tableStart + translateToTable(courses);
+    });
+
+    socket.on('failed',(response)=>{
+      document.getElementById('fail').innerHTML = response;
+    })
+  </script>
 </head>
 <body style="text-align: center;font-family: 'Epilogue', sans-serif;">
   <h2>Fetch Course</h2>
