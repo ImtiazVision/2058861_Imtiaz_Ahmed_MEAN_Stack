@@ -58,7 +58,22 @@ app.get("/template/fetchCourse", (request, response) => {
   response.sendFile('fetchCourse.html', { root: __dirname });
 })
 
+// initiating/defining mongoose schema
+let db = mongoose.connection;
+db.once('open',()=> { 
+  let courseSchema = mongoose.Schema({ 
+    _id:String,
+    cname:String,
+    description:String,
+    amount:Number
+  });
 
+  // using schema we have to create the model 
+  //1st param collection name | 2nd param schema reference
+  let courseModel = mongoose.model("Course", courseSchema);
+
+  
+})
 
 
 
