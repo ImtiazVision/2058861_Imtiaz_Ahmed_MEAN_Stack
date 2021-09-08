@@ -1,47 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="/socket.io/socket.io.js"></script>
-  <script>
-    // initiating the socket
-    var socket = io();
 
-    socket.on('startup',(start)=>{
-      console.log(start);
-    });
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Course</title>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet">
+  </head>
 
-    socket.on('updated_response',(response)=>{
-      console.log(response);
-      document.getElementById('response').innerHTML = response;
-    })
+  <body style="text-align: center;font-family: 'Epilogue', sans-serif;">
+    <form action="update" method="GET">
+      <h2>Update Course</h2>
 
-    function reset() {
-      document.getElementById('id').value = '';
-      document.getElementById('coursePrice').value = '';
-    }
 
-    function submit(){
-      let  course_id = document.getElementById('id').value;
+      <label>Course Id</label>
+      <input type="number" name="cID" placeholder="Course Id" required><br><br>
 
-    }
-  </script>
-</head>
-<body style="text-align: center;font-family: 'Epilogue', sans-serif;">
-  <h2>Update Course</h2>
-  <label>Course Id</label>
-  <input type="number" id="id" placeholder="Course Id"><br>
-  <label>Course Price</label>
-  <input type="number" id="coursePrice" placeholder="Course Price"><br>
-  <input style="font-family: 'Epilogue', sans-serif;"  type='button' value='Update' onclick='submit()'>
-  <input style="font-family: 'Epilogue', sans-serif;" type='button' value='Reset' onclick='reset()'> <br><br>
-  <!-- updated input will go inside the div with id='response' below -->
-  <div id="response"></div><br>
-  <!-- linking back to the main page -->
-  <a href="/">Main Page</a>
-</body>
+
+      <label>Course Price</label>
+      <input type="number" name="amount" placeholder="Course Price"><br><br>
+
+
+      <input style="font-family: 'Epilogue', sans-serif;" type='button' value='Update'>
+      <input style="font-family: 'Epilogue', sans-serif;" type='button' value='Reset'> <br><br>
+
+    </form>
+
+    <!-- linking back to the main page -->
+    <a href="index">Go back to HomePage</a>
+  </body>
+
 </html>
