@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 // creating an empty array to store the data
 let courses = []
 
-// connecting to the mongodb database
+// connecting to the mongodb database. 'course_database_project' is the name of the database
 
 let url = 'mongodb://localhost:27017/course_database_project';
 mongoose.connect(url).
