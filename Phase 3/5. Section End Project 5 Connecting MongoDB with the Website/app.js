@@ -28,8 +28,8 @@ let courses = []
 
 // connecting to the mongodb database
 
-const url = 'mongodb://localhost:27017/course_database_project';
-mongodb.connect(url).
+let url = 'mongodb://localhost:27017/course_database_project';
+mongoose.connect(url).
 then(res=>console.log("Connected")).
 catch(err=>console.log(err));
 
@@ -72,9 +72,95 @@ db.once('open',()=> {
   //1st param collection name | 2nd param schema reference
   let courseModel = mongoose.model("Course", courseSchema);
 
-  
+  // path directory for functions. Addition of courses
+  app.post('/add',(request, response)=>{
+    let courseInfo = request.body;
+    courses.push(courseInfo);
+
+    // Using model we are creating the reference to be added to the database
+    let course = new courseModel({ 
+      _id:courseInfo.cID,
+      cname:courseInfo.cName,
+      description:courseInfo.description,
+      amount:courseInfo.amount
+    });
+
+    // inserting course to the database
+    courseModel.insertMany(course, (err, res)=>{ 
+      if(!err){
+        response.send("Course added successfully");
+      }else{
+        response.send("Error adding course as Course ID must be unique");
+      }
+    })
+  })
+
+  // path directory for functions. Deletion of courses
+  app.get('/delete',(request, response)=>{
+    let cID = request.query.cID;
+
+    courseModel.deleteOne({
+      _id:cID
+    },(err,res)=>{
+      if(!err){
+        response.send("Course deleted successfully");
+      }else{
+        if(res.deletedCount == 0){
+          response.send("Couldn't find a course with the given ID ", + cID);
+        }
+      }
+      response.end();
+    })
+  })
+
+  // path directory for functions. Updating of courses
+  app.get('/update',(request, response)=>{
+    let newAmount = request.query.amount;
+    let cID = request.query.cID;
+
+    courseModel.updateOne({
+      _id:cID},
+      {$set:{amount:newAmount}},
+      (err,res) => {
+        if(!err){
+          response.send("Course updated successfully");
+        }else {
+          if(res.modifiedCount == 0){
+            response.send("Couldn't find a course with the given ID ", + cID);
+          }
+        }
+      })
+  })
+
+  // path directory for functions. Fetching of courses
+  app.get('/fetchCourse',(request, response)=>{
+    var tableContent = '';
+    var startTable = `<table border=1>
+                      <tr>
+                        <th>Course ID</th>
+                        <th>Course Name</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                      </tr>`;
+    var endTable = `</table>`;
+
+    courseModel.find({},(err,res)=>{
+      if(!err){
+        data.forEach(c=>{
+          tableContent += `<tr>
+                            <td>${c._id}</td>
+                            <td>${c.cname}</td>
+                            <td>${c.description}</td>
+                            <td>${c.amount}</td>
+                          </tr>`;
+        })
+        response.write(startTable + tableContent + endTable);
+      }
+    })
+  })
+
 })
 
 
 
-http.listen(3000,()=>console.log("Server is running on port number 3000."));
+app.listen(9090,()=>console.log("Server is running on port number 9090."));
