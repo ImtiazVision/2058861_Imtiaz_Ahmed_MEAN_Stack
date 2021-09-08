@@ -14,7 +14,7 @@ const {response, request} = require('express');
 // to avoid lower case collection creation and adding s postfix to collection name
 mongoose.pluralize(null);
 
-// referencing the express module
+// referencing the express module. Every time we call app.listen, we are actually calling the express module
 let app = express();
 // using bodyParser middleware
 app.use(bodyParser.urlencoded({extended: true}));
