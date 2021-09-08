@@ -6,24 +6,33 @@ let bodyParser = require('body-parser');
 // loading mongoose module
 let mongoose = require('mongoose');
 
+// loading the cors module
+let cors = require('cors');
+
+const {response, request} = require('express');
+
 // to avoid lower case collection creation and adding s postfix to collection name
 mongoose.pluralize(null);
 
 // referencing the express module
 let app = express();
+// using bodyParser middleware
+app.use(bodyParser.urlencoded({extended: true}));
 
-// setting path for the courseCollection from the mongoose model folder
-var courseCollection = require('./model/course.model')
+// adding cors and bodyParser middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-// app.listen(3000,()=>console.log("Server is running on port number 3000."));
+// creating an empty array to store the data
+let courses = []
 
-const url = 'mongodb://localhost:27017/course_database';
+// connecting to the mongodb database
 
-// const test = 'mongodb://localhost:27017/test';
+const url = 'mongodb://localhost:27017/course_database_project';
+mongodb.connect(url).
+then(res=>console.log("Connected")).
+catch(err=>console.log(err));
 
-let http = require('http').Server(app);
-
-// let io = require('socket.io')(http);
 
 mongoose.connect(url).then(()=>{console.log("Connected to Mongoose");
 })
