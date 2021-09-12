@@ -10,32 +10,28 @@
   <script type='text/javascript'>
     // reference of socket.io
     var socket = io();
+        function sendMessageToServer() {
+            var timestamp = new Date();
+            socket.emit("name", document.getElementById("name").value);
+            socket.emit("message", document.getElementById("message").value);
+            socket.emit("time-sent", timestamp.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', second: '2-digit'}));
+            alert("Message Sent Successfully!");
+        }    
 
-    socket.emit('client','Hello Server, I am the client');
-    socket.on('server',(msg)=>{
-      console.log(msg);
-    })
-
-    var count = 0;
-    function sendToDatabase(){
-      let name = document.getElementById('username').value;
-      let chat = document.getElementById('chat').value;
-
-      if(chat){
-        count++;
-        socket.emit('client_chat',name,chat,count); 
-      }
-    }
+        function clearFormData() {
+            document.getElementById("name").value = "";
+            document.getElementById("message").value = "";
+        }
   </script>
 </head>
 <body style="text-align: center;font-family: 'Epilogue', sans-serif;">
   <h2>Socket.io Chat</h2>
   <form id='form'>
-    <label>Name</label>
-    <input style="font-family: 'Epilogue', sans-serif;" type='text' name='name' id='username'/><br><br>
-    <label>Message</label>
-    <input style="font-family: 'Epilogue', sans-serif;" type='textarea' name='chat' id='input'><br><br>
-    <input style="text-align: center;font-family: 'Epilogue', sans-serif;" type='button' value='Send' onclick='sendToDatabase()'><br><br>
+    <label>Name: &nbsp;&nbsp;</label>
+    <input style="font-family: 'Epilogue', sans-serif;" type='text' name='name' id='name'/><br><br>
+    <label>Message: </label>
+    <textarea name="message" id="message"></textarea><br><br>
+    <button  style="text-align: center;font-family: 'Epilogue', sans-serif;" onclick="sendMessageToServer(); clearFormData()"> Send Message</button><br><br>
   </form>
 </body>
 </html>
