@@ -7,7 +7,7 @@ let bodyParser = require('body-parser');
 let app = express();
 // load the mongoose module
 let mongoose = require('mongoose');
-// to avoid lowercase, we pluralize mongoose
+// to avoid lowercase, we pluralize mongoose to avoid the issue 
 mongoose.pluralize(null);
 // load the http module to connect with express
 let http = require('http').Server(app);
