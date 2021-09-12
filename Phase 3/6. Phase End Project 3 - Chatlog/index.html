@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatLog</title>
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src='/socket.io/socket.io.js'></script>
+  <script type='text/javascript'>
+    // reference of socket.io
+    var socket = io();
+
+    socket.emit('client','Hello Server, I am the client');
+    socket.on('server',(msg)=>{
+      console.log(msg);
+    })
+
+    var count = 0;
+    function sendToDatabase(){
+      let name = document.getElementById('username').value;
+      let chat = document.getElementById('chat').value;
+
+      if(chat){
+        count++;
+        socket.emit('client_chat',name,chat,count); 
+      }
+    }
+  </script>
+</head>
+<body style="text-align: center;font-family: 'Epilogue', sans-serif;">
+  <h2>Socket.io Chat</h2>
+  <form id='form'>
+    <label>Name</label>
+    <input style="font-family: 'Epilogue', sans-serif;" type='text' name='name' id='username'/><br><br>
+    <label>Message</label>
+    <input style="font-family: 'Epilogue', sans-serif;" type='textarea' name='chat' id='input'><br><br>
+    <input style="text-align: center;font-family: 'Epilogue', sans-serif;" type='button' value='Send' onclick='sendToDatabase()'><br><br>
+  </form>
+</body>
+</html>
